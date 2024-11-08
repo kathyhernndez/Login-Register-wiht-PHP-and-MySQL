@@ -2,20 +2,19 @@
 
     include 'conexion_be.php';
 
-    $usuario = $_POST['usuario'];
-    $nombres = $_POST['nombres'];
+    $nombres = $_POST['nombre'];
     $correo = $_POST['correo'];
-    $password = $_POST['password'];
+    $clave = $_POST['clave'];
 
     //ENCRIPTAMIENTO DE CONTRASENA
-    $password = hash('sha512', $password);
+    $clave = hash('sha512', $clave);
 
-    $query = "INSERT INTO usuarios(user, nombres, correo, password) VALUES ('$usuario', '$nombres', '$correo', '$password')";
+    $query = "INSERT INTO usuario(nombre, correo, clave) VALUES ('$nombres', '$correo', '$clave')";
 
 
     ///Vericar que no se repitan los regitros
-    $verificar_correo = mysqli_query($conexion, "SELECT * FROM usuarios WHERE correo='$correo' ");
-    $verificar_usuario = mysqli_query($conexion, "SELECT * FROM usuarios WHERE user='$usuario' ");
+    $verificar_correo = mysqli_query($conexion, "SELECT * FROM usuario WHERE correo='$correo' ");
+    //$verificar_usuario = mysqli_query($conexion, "SELECT * FROM usuarios WHERE user='$usuario' ");
 
     //verificando correo
     $verificar_datos = $verificar_correo;
@@ -29,16 +28,16 @@
             exit();
                 }
     //Verificando Usuario
-    $verificar_user = $verificar_usuario;
-    if(mysqli_num_rows($verificar_user) > 0){
-        echo"
-            <script>
-                alert('Este usuario ya esta registrado, prueba con otro diferente');
-                window.location = '../index.php';
-            </script>
-            ";
-            exit();
-                }
+    //$verificar_user = $verificar_usuario;
+    //if(mysqli_num_rows($verificar_user) > 0){
+       // echo"
+           // <script>
+               // alert('Este usuario ya esta registrado, prueba con otro diferente');
+               // window.location = '../index.php';
+          //  </script>
+            //";
+            //exit();
+               // }
     //Proceso de registro de usuario
     $ejecutar = mysqli_query($conexion, $query);
     if($ejecutar){

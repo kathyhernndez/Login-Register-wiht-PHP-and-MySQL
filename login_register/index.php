@@ -34,17 +34,16 @@
                 <!--Login-->
                 <form action="php/login_user_be.php" method="POST" class="formulario__login">
                     <h2>Iniciar Sesion</h2>
-                    <input type="text" placeholder="Correo Electronico" name="correo">
-                    <input type="password" placeholder="Contraseña" name="password">
+                    <input type="text" placeholder="Correo Electronico" name="correo" required>
+                    <input type="password" placeholder="Contraseña" name="clave" required>
                     <button>Entrar</button>
                 </form>
                 <!--Registro-->
                 <form action="php/registro_usuario_be.php" method="POST" class="formulario__register">
                     <h2>Registrarse</h2>
-                    <input type="text" placeholder="Nombre Completo" name="nombres">
-                    <input type="text" placeholder="Correo Electronico" name="correo">
-                    <input type="text" placeholder="Usuario" name="usuario">
-                    <input type="password" placeholder="Contraseña" name="password">
+                    <input type="text" placeholder="Nombre Completo" name="nombre" required>
+                    <input type="text" placeholder="Correo Electronico" name="correo" required>
+                    <input type="password" placeholder="Contraseña" name="clave" required>
                     <button>Registrarse</button>
                 </form>
             </div>
